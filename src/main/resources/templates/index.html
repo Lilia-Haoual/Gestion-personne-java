@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Personne Management System</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+</head>
+<body>
+	
+	<div class="container my-2">
+	
+	<h1>Gestion des Personnes</h1>
+	<a th:href="@{/showNewPersonneForm}" class="btn btn-primary btn-sm mb-3">Ajouter une personne</a>
+	
+		<table class="table table-striped table-responsive-md display" border="1" id="table_id" >
+			<thead>
+				<tr>
+				<th scope="col">Id</th>
+					<!--  <th scope="col"><a href="@{/orderByPrenom}">Prenom</a></th>-->
+					<th scope="col">Prenom</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Mail</th>
+					<th scope="col">Telephone</th>
+					<th scope="col">Note</th>
+					<th scope="col">Departement</th>
+					<th scope="col">Date de naissance</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="personne : ${listPersonne}">
+				<th  th:text="${personne.id}"></th>
+					<td th:text="${personne.prenom}"></td>
+					<td th:text="${personne.nom}"></td>
+					<td th:text="${personne.email}"></td>
+					<td th:text="${personne.telephone}"></td>
+					<td th:text="${personne.note}"></td>
+					<td th:text="${personne.departement}"></td>
+					<td th:text="${personne.dateDeNaissance}"></td>
+					<td><a th:href="@{/showFormForUpdate/{id}(id=${personne.id})}" class="btn btn-primary">Update</a>
+					<a th:href="@{/deletePersonne/{id}(id=${personne.id})}" class="btn btn-danger">Delete</a></td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<script>
+	$(document).ready( function () {
+	    $('#table_id').DataTable();
+	} );
+	</script>
+</body>
+</html>

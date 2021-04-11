@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Personne Management System</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Gestion de Personnes</h1>
+		<hr>
+		<h2>Ajouter une Personne</h2>
+		<form action="#" th:action="@{/savePersonne}" th:object="${personne}" method="POST">
+			
+			<input type="hidden" th:field="*{id}" />
+			<input type="text" th:field="*{prenom}"  class="form-control mb-4 col-4" required>
+			<input type="text" th:field="*{nom}"  class="form-control mb-4 col-4" required>
+			<input type="text" th:field="*{email}"  class="form-control mb-4 col-4" required>
+			<input type="text" th:field="*{telephone}"  class="form-control mb-4 col-4">
+			<input type="text" th:field="*{note}"  class="form-control mb-4 col-4">
+			<input type="text" th:field="*{departement}"  class="form-control mb-4 col-4">
+			<input type="text" th:field="*{dateDeNaissance}"  class="form-control mb-4 col-4">
+			<label>*champs obligatoires</label><br>
+			<button type="submit" class="btn btn-info col-2">Enregistrer</button>
+			
+		</form>
+		<hr>
+		<a th:href="@{/}">Retour à la liste de Personnes</a>
+	</div>
+
+</body>
+</html>
